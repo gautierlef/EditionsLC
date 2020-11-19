@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta charset="UTF-8">
+        <title>{% block title %}Editions LC{% endblock %}</title>
+        <link rel="stylesheet" href="static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/css/etc.css">
+        <link rel="icon" type="image/png" href="images/Logo-LC.png"/>
+        <script type="text/javascript" src="static/js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <nav style="background-color:#e83753;" class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+                    <div class="navbar-header">
+			<img width="50px" height="50px" src="images/Logo-LC.png"></img>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+                            <li class="dropdown">
+				<a style="color:#ffffff; background-color:#e83753;" href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Auteurs<span class="caret"></span></a>
+				<ul style="background-color:#e83753;" class="dropdown-menu" role="menu">
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-auteurs">Tous les auteurs</a></li>
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-ajouter-auteur">Ajouter un auteur</a></li>
+    				</ul>
+                            </li>
+                            <li class="dropdown">
+				<a style="color:#ffffff; background-color:#e83753;" href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Livres<span class="caret"></span></a>
+				<ul style="background-color:#e83753;" class="dropdown-menu" role="menu">
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-livres">Tous les livres</a></li>
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-livres-par-auteur">Livres par auteur</a></li>
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-ajouter-livre">Ajouter un livre</a></li>
+				</ul>
+                            </li>
+                            <li class="dropdown">
+				<a style="color:#ffffff; background-color:#e83753;" href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ventes<span class="caret"></span></a>
+				<ul style="background-color:#e83753;" class="dropdown-menu" role="menu">
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-ventes">Toutes les ventes</a></li>
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-ventes-par-auteur">Ventes par auteur</a></li>
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-ventes-par-livre">Ventes par livre</a></li>
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-ajouter-vente">Ajouter une vente</a></li>
+				</ul>
+                            </li>
+                            <li class="dropdown">
+				<a style="color:#ffffff; background-color:#e83753;" href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bons de dépôt<span class="caret"></span></a>
+				<ul style="background-color:#e83753;" class="dropdown-menu" role="menu">
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-bons-de-depot">Tous les bons de dépôt</a></li>
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-bons-de-depot-par-livre">Bons de dépôt par livre</a></li>
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-ajouter-bon-de-depot">Ajouter un bon de dépôt</a></li>
+				</ul>
+                            </li>
+                            <li class="dropdown">
+				<a style="color:#ffffff; background-color:#e83753;" href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Services presse<span class="caret"></span></a>
+				<ul style="background-color:#e83753;" class="dropdown-menu" role="menu">
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-services-presse">Tous les services presse</a></li>
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-services-presse-par-livre">Services presse par livre</a></li>
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-ajouter-service-presse">Ajouter un service presse</a></li>
+				</ul>
+                            </li>
+                            <li class="dropdown">
+				<a style="color:#ffffff; background-color:#e83753;" href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Salons<span class="caret"></span></a>
+				<ul style="background-color:#e83753;" class="dropdown-menu" role="menu">
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-salons">Tous les salons</a></li>
+                                    <li><a style="background-color:#e83753; color:#ffffff;" href="admin-ajouter-salon">Ajouter un salon</a></li>
+				</ul>
+                            </li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+                            <li><a style="color:#ffffff;" href="accueil">Se déconnecter</a></li>
+			</ul>
+                    </div>
+		</div>
+            </nav>
+        </div>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

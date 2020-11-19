@@ -1,0 +1,25 @@
+{% extends 'auteur/base.html.twig' %}
+
+{% block title %}Auteur - Editions LC{% endblock %}
+
+{% block body %}
+    <center>
+        <div style="width: 30%; border: 1px solid black; background-color: #efefef">
+            <h3 style="font-weight:bold;text-decoration:underline;">Annuler participation</h3>
+            <p style="font-size: 15px">Attention êtes vous sûr de vouloir annuler votre participation?</p>
+            <p style="font-size: 15px">(Cela n'annulera pas les participations au même salon avec un livre différent)</p>
+            <br/>
+            <div style="font-size: 20px">
+                <p><strong>Nom du salon : </strong>{{ participation.salon.nom }}</p>
+                <p><strong>Date : </strong>{{ participation.salon.date.format("d/m/Y") }}</p>
+                <p><strong>Lieu : </strong>{{ participation.salon.ville }}</p>
+                <p><strong>Livre présenté : </strong>{{ participation.livre.titre }}</p>
+            </div>
+            <br/>
+            <form action="/auteur-annulation-participation/{{ participation.id }}/1" Method="post">
+                <td><button class="btn btn-danger">Supprimer</button></td>
+            </form>
+            <br/>
+        </div>
+    </center>
+{% endblock %}

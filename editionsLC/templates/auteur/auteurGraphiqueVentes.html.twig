@@ -1,0 +1,46 @@
+{% extends 'auteur/base.html.twig' %}
+
+{% block title %}Auteur - Editions LC{% endblock %}
+
+{% block body %}
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var myChart = Highcharts.chart('container', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Période'
+            },
+            xAxis: {
+                categories: [
+                    {% for unePeriode in periodes %}
+                        {{ unePeriode.format("m") }} + '/' + {{ unePeriode.format("Y") }}, 
+                    {% endfor %}
+                ]
+            },
+            yAxis: {
+                title: {
+                    text: 'Livres vendus'
+                }
+            },
+            series: [
+                {% for unLivre in livres %}
+                    {
+                        name: '{{ unLivre }}',
+                        data: [
+                        {% for unePeriode in periodes %}
+                            {{ ventesModif[loop.index0 * livres|length + loop.parent.loop.index0] }}, 
+                        {% endfor %}
+                        ]
+                    },
+                {% endfor %}
+            ]
+        });
+    });
+</script>
+    <center>
+        <p style="font-weight:bold; width:59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Graphique des ventes de livres par période</p>
+        <div id="container" style="width:95%; height:600px;"></div>
+    </center>
+{% endblock %}

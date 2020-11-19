@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Auteurs - Editions LC{% endblock %}
+
+{% block body %}
+    <div class="container">
+	<nav style="background-color:#e83753;" class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+		<div class="navbar-header">
+                    <img width="50px" height="50px" src="images/Logo-LC.png"></img>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a style="color:#ffffff; font-weight:bold">Bienvenue sur l'outil pour auteurs des Editions LC!</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+			<li><a style="color:#ffffff;" href="https://editionslc.fr/">Retour au site</a></li>
+                    </ul>
+		</div>
+            </div>
+        </nav>
+	<div class="container-fluid">
+            <div class="row">
+		<div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <center><h1 style="color: #e83753; font-size:60px; font-weight:bold">Bienvenue!</h1></center>
+                    <br/><br/>
+                    <a href="connexion" style="border-color:black; background-color:#e83753" class="btn btn-primary btn-lg btn-block">Connexion</a>
+                    <br/>
+		</div>
+		<div class="col-md-4"></div>
+            </div>
+        </div>
+	<br/><br/>
+	<center><img style="margin-left:30px;" width="400px" height="370px" src="images/Logo-LC.png"></img></center>
+    </div>
+{% endblock %}

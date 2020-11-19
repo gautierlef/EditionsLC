@@ -1,0 +1,25 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    <center>
+        <div style="width: 30%; border: 1px solid black; background-color: #efefef">
+            <h3 style="font-weight:bold;text-decoration:underline;">Supprimer un bon</h3>
+            <p style="font-size: 15px">Attention cette action est irréversible êtes vous sûr de vouloir supprimer ce bon?</p>
+            <br/>
+            <div style="font-size: 20px">
+                <p><strong>Titre : </strong>{{ bon.livre.titre }}</p>
+                <p><strong>Auteur : </strong>{{ bon.livre.auteur.nom }} {{ bon.livre.auteur.prenom }}</p>
+                <p><strong>Destinataire : </strong>{{ bon.destinataire }}</p>
+                <p><strong>Nombre envoyés : </strong>{{ bon.nbEnvoyes }}</p>
+                <p><strong>Nombre vendus : </strong>{{ bon.nbVendus }}</p>
+            </div>
+            <br/>
+            <form action="/admin-suppression-bon-de-depot/{{ bon.id }}/1" Method="post">
+                <td><button class="btn btn-danger">Supprimer</button></td>
+            </form>
+            <br/>
+        </div>
+    </center>
+{% endblock %}

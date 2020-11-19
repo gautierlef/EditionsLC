@@ -1,0 +1,49 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    {% if ventes != null %}
+        <center>
+            <p style="font-weight:bold; width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Ventes</p>
+            {% if error == -1 %}
+                <p style="width: 59.5%;" class="alert alert-success">Vente supprimée avec succès!</p>
+            {% endif %}
+            <table style="width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Livre</th>
+                        <th scope="col">Auteur</th>
+                        <th scope="col">Période</th>
+                        <th scope="col">Source</th>
+                        <th scope="col">Prix à l'unité</th>
+                        <th scope="col">Nombre de ventes</th>
+                        <th scope="col">Total des ventes</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {% for uneVente in ventes %}
+                        <tr>
+                            <td>{{ uneVente.livre.titre }}</td>
+                            <td>{{ uneVente.livre.auteur.nom }} {{ uneVente.livre.auteur.prenom }}</td>
+                            <td>{{ uneVente.date.format("m/Y") }}</td>
+                            <td>{{ uneVente.source }}</td>
+                            <td>{{ uneVente.prix }}€</td>
+                            <td>{{ uneVente.nbVentes }} </td>
+                            <td>{{ uneVente.prix * uneVente.nbVentes }}€</td>
+                            <form action="/admin-modification-vente/{{ uneVente.id }}" Method="post">
+                                <td><button class="btn btn-danger">Modifier</button></td>
+                            </form>
+                            <form action="/admin-suppression-vente/{{ uneVente.id }}/0" Method="post">
+                                <td><button class="btn btn-danger">Supprimer</button></td>
+                            </form>
+                        </tr>          
+                    {% endfor %}
+                </tbody> 
+            </table>
+            <br/>
+            <br/>
+        </center>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    <center>
+        <div style="width: 30%; border: 1px solid black; background-color: #efefef">
+            <h3 style="font-weight:bold;text-decoration:underline;">Supprimer un service</h3>
+            <p style="font-size: 15px">Attention cette action est irréversible êtes vous sûr de vouloir supprimer ce service?</p>
+            <br/>
+            <div style="font-size: 20px">
+                <p><strong>Titre : </strong>{{ service.livre.titre }}</p>
+                <p><strong>Auteur : </strong>{{ service.livre.auteur.nom }} {{ service.livre.auteur.prenom }}</p>
+                <p><strong>Destinataire : </strong>{{ service.destinataire }}</p>
+                <p><strong>Nombre donnés : </strong>{{ service.nbDonnes }}</p>
+            </div>
+            <br/>
+            <form action="/admin-suppression-service-presse/{{ service.id }}/1" Method="post">
+                <td><button class="btn btn-danger">Supprimer</button></td>
+            </form>
+            <br/>
+        </div>
+    </center>
+{% endblock %}

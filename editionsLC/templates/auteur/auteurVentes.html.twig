@@ -1,0 +1,37 @@
+{% extends 'auteur/base.html.twig' %}
+
+{% block title %}Auteur - Editions LC{% endblock %}
+
+{% block body %}
+    {% if ventes != null %}
+        <center>
+            <p style="font-weight:bold; width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Mes ventes</p>
+             <table style="width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Livre</th>
+                        <th scope="col">Période</th>
+                        <th scope="col">Source</th>
+                        <th scope="col">Nombre de ventes</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {% for uneVente in ventes %}
+                        <tr>
+                            <td>{{ uneVente.livre.titre }}</td>
+                            <td>{{ uneVente.date.format("m/Y") }}</td>
+                            <td>{{ uneVente.source }}</td>
+                            <td>{{ uneVente.nbVentes }} </td>
+                        </tr>          
+                    {% endfor %}
+                </tbody> 
+            </table>
+            <br/>
+            <br/>
+        </center>
+    {% else %}
+        <center>
+            <p style="font-weight:bold; width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Aucune vente recensée</p>
+        </center>
+    {% endif %}
+{% endblock %}

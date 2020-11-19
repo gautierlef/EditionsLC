@@ -1,0 +1,40 @@
+{% extends 'auteur/base.html.twig' %}
+
+{% block title %}Auteur - Editions LC{% endblock %}
+
+{% block body %}
+    {% if salons != null %}
+        <center>
+            <p style="font-weight:bold; width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Salons</p>
+            <table style="width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Lieu</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {% for unSalon in salons %}
+                        <tr>
+                            <td>{{ unSalon.nom }}</td>
+                            <td>{{ unSalon.date.format("d/m/Y") }}</td>
+                            <td>{{ unSalon.ville }}</td>
+                            <form action="auteur-get-id-salon/{{ unSalon.id }}/1" Method="post">
+                                <td><button class="btn btn-danger">Participer</button></td>
+                            </form>
+                        </tr>
+                    {% endfor %}
+                </tbody> 
+            </table>
+            <br/>
+            <br/>
+        </center>
+    {% else %}
+        <center>
+            <p style="font-weight:bold; width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Aucun salon à venir.</p>
+        </center>
+    {% endif %}
+{% endblock %}

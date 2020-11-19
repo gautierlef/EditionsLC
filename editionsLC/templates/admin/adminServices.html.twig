@@ -1,0 +1,44 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    {% if services != null %}
+        <center>
+            <p style="font-weight:bold; width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Services presse</p>
+            {% if error == -1 %}
+                <p style="width: 59.5%;" class="alert alert-success">Service presse supprimé avec succès!</p>
+            {% endif %}
+            <table style="width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Livre</th>
+                        <th scope="col">Auteur</th>
+                        <th scope="col">Destinataire</th>
+                        <th scope="col">Nombre de livres donnés</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {% for unService in services %}
+                        <tr>
+                            <td>{{ unService.livre.titre }}</td>
+                            <td>{{ unService.livre.auteur.nom }} {{ unService.livre.auteur.prenom }}</td>
+                            <td>{{ unService.destinataire }}</td>
+                            <td>{{ unService.nbDonnes }}</td>
+                            <form action="/admin-modification-service-presse/{{ unService.id }}" Method="post">
+                                <td><button class="btn btn-danger">Modifier</button></td>
+                            </form>
+                            <form action="/admin-suppression-service-presse/{{ unService.id }}/0" Method="post">
+                                <td><button class="btn btn-danger">Supprimer</button></td>
+                            </form>
+                        </tr>          
+                    {% endfor %}
+                </tbody> 
+            </table>
+            <br/>
+            <br/>
+        </center>
+    {% endif %}
+{% endblock %}

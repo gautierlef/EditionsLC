@@ -1,0 +1,27 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    <center>
+        <div style="width: 30%; border: 1px solid black; background-color: #efefef">
+            <h3 style="font-weight:bold;text-decoration:underline;">Supprimer un auteur</h3>
+            <p style="font-size: 15px">Attention cette action est irréversible êtes vous sûr de vouloir supprimer cet auteur?</p>
+            <br/>
+            <div style="font-size: 20px">
+                <p><strong>Pseudo : </strong>{{ auteur.pseudo }}</p>
+                <p><strong>Mot de passe : </strong>{{ auteur.mdp }}</p>
+                <p><strong>Nom : </strong>{{ auteur.nom }}</p>
+                <p><strong>Prénom : </strong>{{ auteur.prenom }}</p>
+                <p><strong>Ville : </strong>{{ auteur.ville }}</p>
+            </div>
+            <br/>
+            <p style="font-size: 16px">En outre, cela supprimera aussi ses livres, ses ventes, ses bons de dépôt, ses services presse et ses participations aux salons de la base de données.</p>
+            <br/>
+            <form action="/admin-suppression-auteur/{{ auteur.id }}/1" Method="post">
+                <td><button class="btn btn-danger">Supprimer</button></td>
+            </form>
+            <br/>
+        </div>
+    </center>
+{% endblock %}

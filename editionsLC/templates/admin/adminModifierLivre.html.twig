@@ -1,0 +1,30 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    <center>
+        {% if error == -1 %}
+            <p style="width: 30%;" class="alert alert-success">Livre modifié avec succès!</p>
+        {% endif %}
+        <div style="width: 30%; border: 1px solid black; background-color: #efefef">
+            <h3 style="font-weight:bold;text-decoration:underline;">Modifier livre</h3>
+            <br/>
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+            {{ form_label(form.titre) }}
+            {{ form_widget(form.titre) }}<br/>
+            {{ form_label(form.auteur) }}
+            {{ form_widget(form.auteur) }}<br/>
+            {{ form_label(form.stock) }}
+            {{ form_widget(form.stock) }}<br/>
+            <div class="row">
+                <div>
+                    {{ form_widget(form.annuler) }}
+                    <a style="margin-left:50px">{{ form_widget(form.valider) }}</a>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <br/>
+        </div>
+    </center>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    <center>
+        <div style="width: 30%; border: 1px solid black; background-color: #efefef">
+            <h3 style="font-weight:bold;text-decoration:underline;">Supprimer une participation</h3>
+            <p style="font-size: 15px">Attention cette action est irréversible êtes vous sûr de vouloir supprimer cette participation?</p>
+            <br/>
+            <div style="font-size: 20px">
+                <p><strong>Salon : </strong>{{ participation.salon.nom }} du {{ participation.salon.date.format("d/m/Y") }} à {{ participation.salon.ville }}</p>
+                <p><strong>Auteur : </strong>{{ participation.auteur.nom }} {{ participation.auteur.prenom }}</p>
+                <p><strong>Livre : </strong>{{ participation.livre.titre }}</p>
+            </div>
+            <br/>
+            <form action="/admin-suppression-participation/{{ participation.id }}/1" Method="post">
+                <td><button class="btn btn-danger">Supprimer</button></td>
+            </form>
+            <br/>
+        </div>
+    </center>
+{% endblock %}

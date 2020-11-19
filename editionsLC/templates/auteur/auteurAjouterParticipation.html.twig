@@ -1,0 +1,32 @@
+{% extends 'auteur/base.html.twig' %}
+
+{% block title %}Auteur - Editions LC{% endblock %}
+
+{% block body %}
+    <center>
+        {% if error == -1 %}
+            <p style="width: 30%;" class="alert alert-success">Participation enregistrée avec succès! Vous pouvez ajouter d'autres livres à présenter.</p>
+        {% endif %}
+        {% if error == 1 %}
+            <p style="width: 30%;" class="alert alert-danger">Vous participez déjà à ce salon avec ce livre!</p>
+        {% endif %}
+        <div style="width: 30%; border: 1px solid black; background-color: #efefef">
+            <h3 style="font-weight:bold;text-decoration:underline;">Sélectionez le livre à présenter</h3>
+            <br/>
+            <p><strong>Nom du salon : </strong>{{ salon.nom }}</p>
+            <p><strong>Date : </strong>{{ salon.date.format("d/m/Y") }}</p>
+            <p><strong>Lieu : </strong>{{ salon.ville }}</p>
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+            {{ form_label(form.livre) }}
+            {{ form_widget(form.livre) }}<br/>
+            <div class="row">
+                <div>
+                    {{ form_widget(form.annuler) }}
+                    <a style="margin-left:50px">{{ form_widget(form.valider) }}</a>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <br/>
+        </div>
+    </center>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'auteur/base.html.twig' %}
+
+{% block title %}Auteur - Editions LC{% endblock %}
+
+{% block body %}
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var myChart = Highcharts.chart('container', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Total de livres vendus : {{ total }}'
+            },
+            tooltip: {
+                pointFormat: 'Livres vendus : {point.y}<br/>Part : {point.percentage:.1f}%'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b> : {point.y} livres vendus'
+                    }
+                }
+            },
+            series: [{
+                name: 'Livres',
+                colorByPoint: true,
+                data: [
+                    {% for unLivre in livres %}
+                        {
+                            name: '{{ unLivre[0] }}',
+                            y: {{ unLivre[1] }}
+                            
+                        },
+                    {% endfor %}
+                ] 
+            }]
+        });
+    });
+</script>
+    <center>
+        <p style="font-weight:bold; width:59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Graphique des ventes de livres</p>
+        <div id="container" style="width:95%; height:600px;"></div>
+    </center>
+{% endblock %}

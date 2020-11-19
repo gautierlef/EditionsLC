@@ -1,0 +1,46 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    {% if bons != null %}
+        <center>
+            <p style="font-weight:bold; width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Bons de dépôt</p>
+            {% if error == -1 %}
+                <p style="width: 59.5%;" class="alert alert-success">Bon de dépôt supprimé avec succès!</p>
+            {% endif %}
+            <table style="width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Livre</th>
+                        <th scope="col">Auteur</th>
+                        <th scope="col">Destinataire</th>
+                        <th scope="col">Nombre de livres envoyés</th>
+                        <th scope="col">Nombre de livres vendus</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {% for unBon in bons %}
+                        <tr>
+                            <td>{{ unBon.livre.titre }}</td>
+                            <td>{{ unBon.livre.auteur.nom }} {{ unBon.livre.auteur.prenom }}</td>
+                            <td>{{ unBon.destinataire }}</td>
+                            <td>{{ unBon.nbEnvoyes }}</td>
+                            <td>{{ unBon.nbVendus }} </td>
+                            <form action="/admin-modification-bon-de-depot/{{ unBon.id }}" Method="post">
+                                <td><button class="btn btn-danger">Modifier</button></td>
+                            </form>
+                            <form action="/admin-suppression-bon-de-depot/{{ unBon.id }}/0" Method="post">
+                                <td><button class="btn btn-danger">Supprimer</button></td>
+                            </form>
+                        </tr>          
+                    {% endfor %}
+                </tbody> 
+            </table>
+            <br/>
+            <br/>
+        </center>
+    {% endif %}
+{% endblock %}

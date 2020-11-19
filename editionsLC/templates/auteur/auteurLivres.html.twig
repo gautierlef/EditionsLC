@@ -1,0 +1,31 @@
+{% extends 'auteur/base.html.twig' %}
+
+{% block title %}Auteur - Editions LC{% endblock %}
+
+{% block body %}
+    {% if livres != null %}
+        <center>
+            <p style="font-weight:bold; width:59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Mes livres</p>
+            <table style="width:59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Titre</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {% for unLivre in livres %}
+                        <tr>
+                            <td>{{ unLivre.titre }}</td>
+                            <td><a href="auteur-get-id-livre/{{ unLivre.id }}" class="btn btn-danger">Voir ventes</a></td>
+                            <td><a href="/auteur-graphique-ventes-2" class="btn btn-danger">Voir graphique des ventes</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody> 
+            </table>
+            <br/>
+            <br/>
+        </center>
+    {% endif %}
+{% endblock %}

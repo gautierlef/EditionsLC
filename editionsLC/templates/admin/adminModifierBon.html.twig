@@ -1,0 +1,32 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    <center>
+        {% if error == -1 %}
+            <p style="width: 30%;" class="alert alert-success">Bon de dépôt modifié avec succès!</p>
+        {% endif %}
+        <div style="width: 30%; border: 1px solid black; background-color: #efefef">
+            <h3 style="font-weight:bold;text-decoration:underline;">Modifier bon de dépôt</h3>
+            <br/>
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+            {{ form_label(form.livre) }}
+            {{ form_widget(form.livre) }}<br/>
+            {{ form_label(form.nbEnvoyes) }}
+            {{ form_widget(form.nbEnvoyes) }}<br/>
+            {{ form_label(form.nbVendus) }}
+            {{ form_widget(form.nbVendus) }}<br/>
+            {{ form_label(form.destinataire) }}
+            {{ form_widget(form.destinataire) }}<br/>
+            <div class="row">
+                <div>
+                    {{ form_widget(form.annuler) }}
+                    <a style="margin-left:50px">{{ form_widget(form.valider) }}</a>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <br/>
+        </div>
+    </center>
+{% endblock %}

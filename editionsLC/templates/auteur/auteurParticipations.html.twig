@@ -1,0 +1,49 @@
+{% extends 'auteur/base.html.twig' %}
+
+{% block title %}Auteur - Editions LC{% endblock %}
+
+{% block body %}
+    {% if participations != null %}
+        <center>
+            <p style="font-weight:bold; width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Participations aux salons</p>
+            {% if error == -1 %}
+                <p style="width: 59.5%;" class="alert alert-success">Participation annulée avec succès!</p>
+            {% endif %}
+             <table style="width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom du salon</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Lieu</th>
+                        <th scope="col">Livre présenté</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {% for uneParticipation in participations %}
+                        <tr>
+                            <td>{{ uneParticipation.salon.nom }}</td>
+                            <td>{{ uneParticipation.salon.date.format("d/m/Y") }}</td>
+                            <td>{{ uneParticipation.salon.ville }}</td>
+                            <td>{{ uneParticipation.livre.titre }}</td>
+                            {% if uneParticipation.salon.date.format("Y-m-d")|date("Y-m-d") > date|date("Y-m-d") %}
+                                <td><a href="/auteur-annulation-participation/{{ uneParticipation.id }}/0" class="btn btn-danger">Annuler participation</a></td>
+                            {% else %}
+                                <td><a class="btn btn-danger" disabled>Le salon a eu lieu</a></td>
+                            {% endif %}
+                        </tr>          
+                    {% endfor %}
+                </tbody> 
+            </table>
+            <br/>
+            <br/>
+        </center>
+    {% else %}
+        <center>
+            {% if error == -1 %}
+                <p style="width: 59.5%;" class="alert alert-success">Vente supprimée avec succès!</p>
+            {% endif %}
+            <p style="font-weight:bold; width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Vous n'avez aucune Participations à un salon.</p>
+        </center>
+    {% endif %}
+{% endblock %}

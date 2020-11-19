@@ -1,0 +1,22 @@
+{% extends 'auteur/base.html.twig' %}
+
+{% block title %}Auteur - Editions LC{% endblock %}
+
+{% block body %}
+    <center>
+        <div style="width: 30%; border: 1px solid black; background-color: #efefef">
+            <h3 style="font-weight:bold;text-decoration:underline;">Choisir livre</h3>
+            <br/>
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+            {{ form_label(form.livre) }}
+            {{ form_widget(form.livre) }}<br/>
+            <div class="row">
+                <div>
+                    {{ form_widget(form.valider) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <br/>
+        </div>
+    </center>
+{% endblock %}

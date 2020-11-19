@@ -1,0 +1,50 @@
+{% extends 'auteur/base.html.twig' %}
+
+{% block title %}Auteur - Editions LC{% endblock %}
+
+{% block body %}
+    <center>
+        {% if error == -1 %}
+            <p style="width: 30%;" class="alert alert-success">Mot de passe modifié avec succès!</p>
+        {% endif %}
+        {% if error == 1 %}
+            <p style="width: 30%;" class="alert alert-danger">Le mot de passe est le même qu'avant!</p>
+        {% endif %}
+        {% if error == 2 %}
+            <p style="width: 30%;" class="alert alert-danger">Les mots de passe ne sont pas les mêmes!</p>
+        {% endif %}
+        {% if error == 3 %}
+            <p style="width: 30%;" class="alert alert-danger">L'ancien mot de passe est incorrect!</p>
+        {% endif %}
+        {% if error == 4 %}
+            <p style="width: 30%;" class="alert alert-warning">Veuillez modifier votre mot de passe pour vos futurs connexions.</p>
+        {% endif %}
+        {% if error == 5 %}
+            <p style="width: 30%;" class="alert alert-danger">Le nouveau mot de passe ne respecte pas les critères demandés.</p>
+        {% endif %}
+        {% if error == 6 %}
+            <p style="width: 30%;" class="alert alert-danger">Le nouveau mot de passe doit au moins contenir 6 caractères!</p>
+        {% endif %}
+        <div style="width: 30%; border: 1px solid black; background-color: #efefef">
+            <h3 style="font-weight:bold;text-decoration:underline;">Modifer mot de passe</h3>
+            <p>Le mot de passe doit contenir au moins 1 minuscule, 1 majuscule et 1 chiffre</p>
+            <p>(En cas d'oubli de mot de passe, veuillez contacter un administrateur)</p>
+            <br/>
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+            {{ form_label(form.ancienMdp) }}
+            {{ form_widget(form.ancienMdp) }}<br/>
+            {{ form_label(form.nouveauMdp) }}
+            {{ form_widget(form.nouveauMdp) }}<br/>
+            {{ form_label(form.confirmerMdp) }}
+            {{ form_widget(form.confirmerMdp) }}<br/>
+            <div class="row">
+                <div>
+                    {{ form_widget(form.annuler) }}
+                    <a style="margin-left:50px">{{ form_widget(form.valider) }}</a>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <br/>
+        </div>
+    </center>
+{% endblock %}

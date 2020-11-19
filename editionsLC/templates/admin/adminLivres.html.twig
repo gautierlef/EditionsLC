@@ -1,0 +1,43 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    {% if livres != null %}
+        <center>
+            <p style="font-weight:bold; width:59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Livres</p>
+            {% if error == -1 %}
+                <p style="width: 59.5%;" class="alert alert-success">Livre supprimé avec succès!</p>
+            {% endif %}
+            <table style="width:59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Auteur</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for unLivre in livres %}
+                        <tr>
+                            <td>{{ unLivre.titre }}</td>
+                            <td>{{ unLivre.auteur.nom }} {{ unLivre.auteur.prenom }}</td>
+                            <td>{{ unLivre.stock }}</td>
+                            <td><a href="admin-get-id-livre/{{ unLivre.id }}" class="btn btn-danger">Voir ventes</a></td>
+                            <form action="/admin-modification-livre/{{ unLivre.id }}" Method="post">
+                                <td><button class="btn btn-danger">Modifier</button></td>
+                            </form>
+                            <form action="/admin-suppression-livre/{{ unLivre.id }}/0" Method="post">
+                                <td><button class="btn btn-danger">Supprimer</button></td>
+                            </form>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br/>
+            <br/>
+        </center>
+    {% endif %}
+{% endblock %}

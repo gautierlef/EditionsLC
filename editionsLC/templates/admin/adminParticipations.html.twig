@@ -1,0 +1,38 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    <center>
+        <p style="font-weight:bold; width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Participations à/au {{ salon.nom }} du {{ salon.date.format("m/Y") }} à {{ salon.ville }}</p>
+        {% if error == -1 %}
+            <p style="width: 59.5%;" class="alert alert-success">Participation supprimée avec succès!</p>
+        {% endif %}
+        {% if participations != null %}
+            <table style="width:59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Livre</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {% for uneParticipation in participations %}
+                        <tr>
+                            <td>{{ uneParticipation.auteur.nom }}</td>
+                            <td>{{ uneParticipation.auteur.prenom }}</td>
+                            <td>{{ uneParticipation.livre.titre }}</td>
+                            <form action="/admin-suppression-participation/{{ uneParticipation.id }}/0" Method="post">
+                                <td><button class="btn btn-danger">Supprimer</button></td>
+                            </form>
+                        </tr>          
+                    {% endfor %}
+                </tbody> 
+            </table>
+            <br/>
+            <br/>
+        {% endif %}
+    </center>
+{% endblock %}

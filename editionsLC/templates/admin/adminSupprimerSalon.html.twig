@@ -1,0 +1,25 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    <center>
+        <div style="width: 30%; border: 1px solid black; background-color: #efefef">
+            <h3 style="font-weight:bold;text-decoration:underline;">Supprimer un salon</h3>
+            <p style="font-size: 15px">Attention cette action est irréversible êtes vous sûr de vouloir supprimer ce salon?</p>
+            <br/>
+            <div style="font-size: 20px">
+                <p><strong>Nom : </strong>{{ salon.nom }}</p>
+                <p><strong>Date : </strong>{{ salon.date.format("m/Y") }}</p>
+                <p><strong>Lieu : </strong>{{ salon.ville }}</p>
+            </div>
+            <br/>
+            <p style="font-size: 16px">En outre, cela supprimera aussi les participations à ce salon de la base de données.</p>
+            <br/>
+            <form action="/admin-suppression-salon/{{ salon.id }}/1" Method="post">
+                <td><button class="btn btn-danger">Supprimer</button></td>
+            </form>
+            <br/>
+        </div>
+    </center>
+{% endblock %}

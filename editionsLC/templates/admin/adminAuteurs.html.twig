@@ -1,0 +1,49 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration - Editions LC{% endblock %}
+
+{% block body %}
+    {% if auteurs != null %}
+        <center>
+            <p style="font-weight:bold; width:59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">Auteurs</p>
+            {% if error == -1 %}
+                <p style="width: 59.5%;" class="alert alert-success">Auteur(e) supprimé(e) avec succès!</p>
+            {% endif %}
+            <table style="width: 59.5%; background-color:whitesmoke; border-radius: 5px;" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Pseudo</th>
+                        <th scope="col">Mot de passe</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Ville</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {% for unAuteur in auteurs %}
+                        <tr>
+                            <td>{{ unAuteur.pseudo }}</td>
+                            <td>{{ unAuteur.mdp }}</td>
+                            <td>{{ unAuteur.nom }}</td>
+                            <td>{{ unAuteur.prenom }}</td>
+                            <td>{{ unAuteur.ville }}</td>
+                            <td><a href="admin-get-id-auteur/{{ unAuteur.id }}/0" class="btn btn-danger">Voir livres</a></td>
+                            <td><a href="admin-get-id-auteur/{{ unAuteur.id }}/1" class="btn btn-danger">Voir ventes</a></td>
+                            <form action="/admin-modification-auteur/{{ unAuteur.id }}" Method="post">
+                                <td><button class="btn btn-danger">Modifier</button></td>
+                            </form>
+                            <form action="/admin-suppression-auteur/{{ unAuteur.id }}/0" Method="post">
+                                <td><button class="btn btn-danger">Supprimer</button></td>
+                            </form>
+                        </tr>          
+                    {% endfor %}
+                </tbody> 
+            </table>
+            <br/>
+            <br/>
+        </center>
+    {% endif %}
+{% endblock %}
